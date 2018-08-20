@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "sdkVersion": "27.0.0",
+
+    "name": "Coral",
+    "slug": "coral-app",
+
+    "splash": {
+      "backgroundColor": "#EEEEEE",
+      "resizeMode": "cover",
+      "image": "./assets/images/bg.png"
+    }  
+  }
+}
