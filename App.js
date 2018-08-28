@@ -22,9 +22,9 @@ export default class App extends React.Component {
 
     if (!this.state.isAppReady) {
       return (
-        <View style={{ flex: 1 }}>
+        <View style={styles.container}>
           <Image
-            source={require('./assets/images/logo.png')}
+            source={require('./assets/images/bg.png')}
             onLoad={this._cacheResourcesAsync}
           />
         </View>
@@ -34,26 +34,19 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}> Enter your mobile number
-        </Text>      
-
+      <Image source = {require('./assets/images/bg.png')} />
       </View>
-    );    
+    );
   }
 
   _cacheSplashResourcesAsync = async () => {
-//    const gif = require('./assets/images/splash.gif');
-    const gif = require('./assets/images/logo.png');
-return Asset.fromModule(gif).downloadAsync()
+    const gif = require('./assets/images/bg.png');
+    return Asset.fromModule(gif).downloadAsync()
   }
 
   _cacheResourcesAsync = async () => {
-//this is not working->    SplashScreen.hide();
     const images = [
-//      require('./assets/images/expo-icon.png'),
-//      require('./assets/images/slack-icon.png'),
-//      require('./assets/images/RC_profile.png'),
-//      require('./assets/images/RC.png'),
+      require('./assets/images/bg.png'),
     ];
 
     const cacheImages = images.map((image) => {
@@ -63,27 +56,13 @@ return Asset.fromModule(gif).downloadAsync()
     await Promise.all(cacheImages);
     this.setState({ isAppReady: true });
   }
-
 }
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  welcome:{
-    fontSize: 26,
-    textAlign: 'center',
-    margin: 10,
-  },
-
-  input:{
-    fontSize: 26,
-    borderWidth: 2,
-    height: 40
   }
 });

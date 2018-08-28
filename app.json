@@ -7,7 +7,7 @@
 
     "splash": {
       "backgroundColor": "#EEEEEE",
-      "resizeMode": "cover",
+      "resizeMode": "contain",
       "image": "./assets/images/bg.png"
     }  
   }
