@@ -1,0 +1,106 @@
+{
+	"name": "CoralAppProject",
+	"projectId": "62c3fc5a-0aa1-49cc-bb37-28097daed836",
+	"region": "ap-southeast-1",
+	"state": "NORMAL",
+	"createdDate": "2018-08-28T08:58:38.011Z",
+	"lastUpdatedDate": "2018-08-28T08:59:02.593Z",
+	"consoleUrl": "https://console.aws.amazon.com/mobilehub/home#/62c3fc5a-0aa1-49cc-bb37-28097daed836/build",
+	"resources": [
+		{
+			"type": "AWS::Pinpoint::AnalyticsApplication",
+			"name": "coralappproject_MobileHub",
+			"arn": "13bc41a4a49449a7adc25c525e5b1353",
+			"feature": "analytics",
+			"attributes": {
+				"lastUpdateRequestID": "4b5cd4a6-93ad-41a2-8375-5deeed1b0da7"
+			}
+		},
+		{
+			"type": "AWS::IAM::Policy",
+			"name": "coralappproject_mobileanalytics_MOBILEHUB_2068422356",
+			"arn": null,
+			"feature": "analytics",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "4b5cd4a6-93ad-41a2-8375-5deeed1b0da7",
+				"role": "coralappproject_unauth_MOBILEHUB_2068422356"
+			}
+		},
+		{
+			"type": "AWS::Cognito::IdentityPool",
+			"name": "coralappproject_MOBILEHUB_2068422356",
+			"arn": "ap-southeast-1:00bab33e-4b80-4e28-8f32-79ced81693be",
+			"feature": "user-signin",
+			"attributes": {
+				"lastUpdateRequestID": "4b5cd4a6-93ad-41a2-8375-5deeed1b0da7",
+				"poolid": "ap-southeast-1:00bab33e-4b80-4e28-8f32-79ced81693be",
+				"roleARNs": "arn:aws:iam::443785079035:role/coralappproject_unauth_MOBILEHUB_2068422356"
+			}
+		},
+		{
+			"type": "AWS::IAM::Role",
+			"name": "coralappproject_unauth_MOBILEHUB_2068422356",
+			"arn": "arn:aws:iam::443785079035:role/coralappproject_unauth_MOBILEHUB_2068422356",
+			"feature": "user-signin",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "4b5cd4a6-93ad-41a2-8375-5deeed1b0da7"
+			}
+		},
+		{
+			"type": "AWS::S3::Bucket",
+			"name": "coralappproject-hosting-mobilehub-2068422356",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"lastUpdateRequestID": "4b5cd4a6-93ad-41a2-8375-5deeed1b0da7",
+				"region": "ap-southeast-1",
+				"s3-bucket-console-url": "https://s3.console.aws.amazon.com/s3/buckets/coralappproject-hosting-mobilehub-2068422356",
+				"s3-bucket-website-url": "https://s3.amazonaws.com/coralappproject-hosting-mobilehub-2068422356"
+			}
+		},
+		{
+			"type": "AWS::CloudFront::Distribution",
+			"name": "d2n85nxhev471r.cloudfront.net",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"id": "E2D8MUGLXJXXX",
+				"lastUpdateRequestID": "4b5cd4a6-93ad-41a2-8375-5deeed1b0da7"
+			}
+		},
+		{
+			"type": "AWS::IAM::Policy",
+			"name": "coralappproject_hosting_MOBILEHUB_2068422356",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "4b5cd4a6-93ad-41a2-8375-5deeed1b0da7",
+				"role": "coralappproject_unauth_MOBILEHUB_2068422356"
+			}
+		},
+		{
+			"type": "AWS::S3::Bucket",
+			"name": "coralappproject-deployments-mobilehub-2068422356",
+			"arn": null,
+			"feature": "common",
+			"attributes": {
+				"region": "ap-southeast-1",
+				"s3-bucket-console-url": "https://s3.console.aws.amazon.com/s3/buckets/coralappproject-deployments-mobilehub-2068422356"
+			}
+		},
+		{
+			"type": "AWS::CloudFormation::Stack",
+			"name": "Development",
+			"arn": null,
+			"feature": "cloud-api",
+			"attributes": {
+				"primary": "true",
+				"region": "ap-southeast-1",
+				"stateSummary": "NOT_YET_DEPLOYED"
+			}
+		}
+	]
+}
