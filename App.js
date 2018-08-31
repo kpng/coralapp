@@ -1,68 +1,102 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { Asset, AppLoading, SplashScreen } from 'expo';
+import { Animated, Image, ImageBackground, StyleSheet, Text, TextInput, Button, View } from 'react-native';
+import { Asset, AppLoading, BlurView } from 'expo';
+
+import Amplify, { Auth } from 'aws-amplify'
+import AWSConfig from './aws-exports'
+Amplify.configure(AWSConfig)
+
+import Tabs from './Tabs'
+
+const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
+const Backgrounduri = './assets/images/bg.png';
+
 
 export default class App extends React.Component {
   state = {
     isSplashReady: false,
     isAppReady: false,
-  };
+    isReady: false,
+    username: '',
+    intensity: new Animated.Value(0)
+  }
+
+  componentDidMount(){
+    this._animate();
+  }
+
+  _animate = () => {
+    let { intensity } = this.state;
+    Animated.timing(intensity, {duration: 2500, toValue: 80}).start() ;
+  }
+
+  onChangeText (key, value){
+    this.setState({
+      [key]:value
+    })
+  }
+
 
   render() {
-    if (!this.state.isSplashReady) {
+    if (!this.state.isReady) {
+      console.log('Is not ready', this.state.isReady)
       return (
         <AppLoading
-          startAsync={this._cacheSplashResourcesAsync}
-          onFinish={() => this.setState({ isSplashReady: true })}
+          startAsync={this._cacheResourcesAsync}
+          onFinish={() => this.setState({ isReady: true })}
           onError={console.warn}
           autoHideSplash={false}
         />
       );
     }
 
-    if (!this.state.isAppReady) {
-      return (
-        <View style={styles.container}>
-          <Image
-            source={require('./assets/images/bg.png')}
-            onLoad={this._cacheResourcesAsync}
-          />
-        </View>
-      );
-    }
-
-
     return (
-      <View style={styles.container}>
-      <Image source = {require('./assets/images/bg.png')} />
+      <View style={styles.container}> 
+        <ImageBackground source = {require('./assets/images/bg.png')} style={{width: '100%', height: '100%'}}>
+
+        </ImageBackground>
+
+        {/* Adjust the tint and intensity */}
+{/*
+        <BlurView tint="light" intensity={50} style={StyleSheet.absoluteFill}>
+          <Image style={{ width: 96, height: 96 }} source={{ Backgrounduri }} />
+        </BlurView>
+      */}
+
+
+       <AnimatedBlurView
+          tint = "default"
+          intensity = {this.state.intensity}
+          style = {StyleSheet.absoluteFill} />
       </View>
     );
   }
 
-  _cacheSplashResourcesAsync = async () => {
-    const gif = require('./assets/images/bg.png');
-    return Asset.fromModule(gif).downloadAsync()
-  }
-
-  _cacheResourcesAsync = async () => {
+  async _cacheResourcesAsync(){
     const images = [
-      require('./assets/images/bg.png'),
+      require ('./assets/images/logo.png')
     ];
 
     const cacheImages = images.map((image) => {
       return Asset.fromModule(image).downloadAsync();
     });
+    return Promise.all(cacheImages)
 
-    await Promise.all(cacheImages);
-    this.setState({ isAppReady: true });
   }
 }
 
 
 const styles = StyleSheet.create({
+  input: {
+    height: 28,
+    borderBottomWidth: 2,
+    borderBottomColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 50
+  },
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
   }
 });
