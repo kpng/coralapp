@@ -9,7 +9,7 @@ import SignUp from './SignUp'
 export default class App extends React.Component {
   state = {
     username: '',
-    password: 'Qwerty-123',
+    password: '',
     phone_number: '',
     confirmationCode: '',
     user: {}
@@ -42,20 +42,29 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput
-          onChangeText={value => this.onChangeText('username', value)}
+          onChangeText={value => this.onChangeText('phone_number', value)}
           style={styles.input}
-          placeholder='username'
+          placeholder='8-digit mobile number'
           placeholderTextColor='grey'
         />
-        {/* <TextInput
+        <TextInput
           onChangeText={value => this.onChangeText('password', value)}
           style={styles.input}
           secureTextEntry={true}
           placeholder='password'
-        /> */}
+        />
         <Button title="Sign In" onPress={this.signIn.bind(this)} />
 
-         <Text style={styles.signupText}>
+
+        <TextInput
+          onChangeText={value => this.onChangeText('confirmationCode', value)}
+          style={styles.input}
+          placeholder='confirmation Code'
+        />
+        <Button title="Confirm Sign In" onPress={this.confirmSignIn.bind(this)} />
+
+
+        <Text style={styles.signupText}>
         Not a member yet?
         </Text>
         <Button 
@@ -72,17 +81,15 @@ const styles = StyleSheet.create({
     height: 30,
     borderBottomWidth: 2,
     borderBottomColor: '#111111',
-    margin: 50,
-    textAlign: 'center',
+    margin: 50
   },
   container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'transparent',
+    //flex: 1,
+    //flexDirection: 'column',
+    backgroundColor: '#fff',
+    justifyContent: 'flex-end',
   },
   signupText: {
-    paddingTop: 150,
-    //flex: 1,
     textAlign: 'center',
   },
 });

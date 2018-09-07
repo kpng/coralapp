@@ -6,7 +6,7 @@ import Amplify, { Auth } from 'aws-amplify'
 import AWSConfig from './aws-exports'
 Amplify.configure(AWSConfig)
 
-import Tabs from './Tabs'
+import Routes from './Tabs'
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 const Backgrounduri = './assets/images/bg.png';
@@ -18,7 +18,8 @@ export default class App extends React.Component {
     isAppReady: false,
     isReady: false,
     username: '',
-    intensity: new Animated.Value(0)
+    intensity: new Animated.Value(0),
+    isAuthenticated: false
   }
 
   componentDidMount(){
@@ -27,7 +28,7 @@ export default class App extends React.Component {
 
   _animate = () => {
     let { intensity } = this.state;
-    Animated.timing(intensity, {duration: 2500, toValue: 80}).start() ;
+    Animated.timing(intensity, {duration: 2500, toValue: 100}).start() ;
   }
 
   onChangeText (key, value){
@@ -52,23 +53,29 @@ export default class App extends React.Component {
 
     return (
       <View style={styles.container}> 
-        <ImageBackground source = {require('./assets/images/bg.png')} style={{width: '100%', height: '100%'}}>
 
-        </ImageBackground>
+         {/* <ImageBackground source = {require(Backgrounduri)} style={{width: '100%', height: '100%'}}>
+         </ImageBackground> */}
 
         {/* Adjust the tint and intensity */}
 {/*
         <BlurView tint="light" intensity={50} style={StyleSheet.absoluteFill}>
           <Image style={{ width: 96, height: 96 }} source={{ Backgrounduri }} />
         </BlurView>
-      */}
+*/}
 
 
-       <AnimatedBlurView
+       {/* <AnimatedBlurView
           tint = "default"
           intensity = {this.state.intensity}
-          style = {StyleSheet.absoluteFill} />
+          style = {StyleSheet.absoluteFill} /> */}
+
+
+      <Routes />
+
+
       </View>
+
     );
   }
 

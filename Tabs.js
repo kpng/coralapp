@@ -1,11 +1,30 @@
-import { createBottomTabNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 
-const config = {
-  SignIn: { screen: SignIn },
-  SignUp: { screen: SignUp }
-}
+const Routes = createStackNavigator (
+  {
+    SignIn: { 
+      screen: SignIn,
+      navigationOptions: {
+        header: null
+      } 
+    },
+    SignUp: { 
+      screen: SignUp,
+      navigationOptions: {
+        header: null,
+      } 
+    }
+  },
+  {
+    initialRouteName: "SignIn",
+    navigationOptions: {
+      backgroundColor: "transparent"
+    },
+    animationEnable: true
+  }
+);
 
-export default createBottomTabNavigator(config)
+export default Routes;
