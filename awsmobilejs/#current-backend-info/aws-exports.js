@@ -7,19 +7,24 @@
 // AWS Mobile Hub Project Constants
 const awsmobile = {
     'aws_app_analytics': 'enable',
-    'aws_cognito_identity_pool_id': 'ap-southeast-1:00bab33e-4b80-4e28-8f32-79ced81693be',
+    'aws_cognito_identity_pool_id': 'ap-southeast-1:967216f3-89e6-4d5a-bce5-5fe2799b6d84',
     'aws_cognito_region': 'ap-southeast-1',
     'aws_content_delivery': 'enable',
-    'aws_content_delivery_bucket': 'coralappproject-hosting-mobilehub-2068422356',
+    'aws_content_delivery_bucket': 'coralapp-hosting-mobilehub-1369516145',
     'aws_content_delivery_bucket_region': 'ap-southeast-1',
     'aws_content_delivery_cloudfront': 'enable',
-    'aws_content_delivery_cloudfront_domain': 'd2n85nxhev471r.cloudfront.net',
-    'aws_mobile_analytics_app_id': '13bc41a4a49449a7adc25c525e5b1353',
+    'aws_content_delivery_cloudfront_domain': 'd3363xx03h4uvp.cloudfront.net',
+    'aws_mobile_analytics_app_id': '62c141f74b3d43d2bb730fe7285a2725',
     'aws_mobile_analytics_app_region': 'us-east-1',
-    'aws_project_id': '62c3fc5a-0aa1-49cc-bb37-28097daed836',
-    'aws_project_name': 'CoralAppProject',
+    'aws_project_id': 'a42f08bf-48ae-4c71-a120-244b8e7302f6',
+    'aws_project_name': 'coralapp0609',
     'aws_project_region': 'ap-southeast-1',
-    'aws_resource_name_prefix': 'coralappproject-mobilehub-2068422356',
+    'aws_resource_name_prefix': 'coralapp-mobilehub-1369516145',
+    'aws_sign_in_enabled': 'enable',
+    'aws_user_pools': 'enable',
+    'aws_user_pools_id': 'ap-southeast-1_ry4xmgvw4',
+    'aws_user_pools_mfa_type': 'OPTIONAL',
+    'aws_user_pools_web_client_id': '56tq8otu4j4tlpn66aa5i532ll',
 }
 
 export default awsmobile;

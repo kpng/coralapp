@@ -1,5 +1,10 @@
 import React from 'react';
-import { TextInput, Button, StyleSheet, Text, View } from 'react-native';
+import { TextInput, Button, StyleSheet, Text, View, Image } from 'react-native';
+
+import { Auth } from 'aws-amplify'
+
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 
 export default class App extends React.Component {
   state = {
@@ -17,9 +22,10 @@ export default class App extends React.Component {
   signUp() {
     Auth.signUp({
       username: this.state.username,
-      password: this.state.password,
+      //password: this.state.password,
+      password: 'Qwerty-123',
       attributes: {
-        email: this.state.email,
+        email: this.state.username,
         phone_number: this.state.phone_number
       }
     })
@@ -28,40 +34,53 @@ export default class App extends React.Component {
   }
   confirmSignUp() {
     Auth.confirmSignUp(this.state.username, this.state.confirmationCode)
-    .then(() => console.log('successful confirm sign up!'))
+    .then(() => { 
+      console.log('successful confirm sign up!')
+      this.props.navigation.navigate('SignIn')
+    }
+    )
     .catch(err => console.log('error confirming signing up!: ', err))
   }
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          onChangeText={value => this.onChangeText('username', value)}
-          style={styles.input}
-          placeholder='username'
-        />
-        <TextInput
-          onChangeText={value => this.onChangeText('password', value)}
-          style={styles.input}
-          secureTextEntry={true}
-          placeholder='password'
-        />
-        <TextInput
-          onChangeText={value => this.onChangeText('phone_number', value)}
-          style={styles.input}
-          placeholder='phone'
-        />
-        <TextInput
-          onChangeText={value => this.onChangeText('email', value)}
-          style={styles.input}
-          placeholder='email'
-        />
-        <Button title="Sign Up" onPress={this.signUp.bind(this)} />
-        <TextInput
-          onChangeText={value => this.onChangeText('confirmationCode', value)}
-          style={styles.input}
-          placeholder='confirmation Code'
-        />
-        <Button title="Confirm Sign Up" onPress={this.confirmSignUp.bind(this)} />
+        <Image source={require('./assets/images/logo.png')} style={styles.logo} />
+          <Text style={[styles.gothamLight, styles.title]}>CORAL</Text>
+          <Text style={[styles.subText, styles.gothamLight]}>Community Recycling Made Simple</Text>
+          <TextInput
+            onChangeText={value => this.onChangeText('username', value)}
+            style={styles.input}
+            placeholder='email'
+          />
+          {/* <TextInput
+            onChangeText={value => this.onChangeText('password', value)}
+            style={styles.input}
+            secureTextEntry={true}
+            placeholder='password'
+          /> */}
+          <TextInput
+            onChangeText={value => this.onChangeText('phone_number', value)}
+            style={styles.input}
+            placeholder='phone'
+          />
+          {/* <TextInput
+            onChangeText={value => this.onChangeText('email', value)}
+            style={styles.input}
+            placeholder='email'
+          /> */}
+          <Button title="Sign Up" onPress={this.signUp.bind(this)} />
+          <TextInput
+            onChangeText={value => this.onChangeText('confirmationCode', value)}
+            style={styles.input}
+            placeholder='confirmation Code'
+          />
+          <Button title="Confirm Sign Up" onPress={this.confirmSignUp.bind(this)} />
+
+          <Text style={styles.signin}>Already a member?</Text>
+          <Button 
+            title="Sign In Here!" 
+            onPress={ () => this.props.navigation.navigate('SignIn')} 
+          />
       </View>
     );
   }
@@ -78,5 +97,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
+  },
+  signin: {
+    textAlign: 'center',
   },
 });
