@@ -1,12 +1,24 @@
 import React from 'react';
-import { Animated, Image, ImageBackground, StyleSheet, Text, TextInput, Button, View } from 'react-native';
-import { Asset, AppLoading, BlurView } from 'expo';
+import { 
+  Animated, 
+  Image, ImageBackground, 
+  StyleSheet, 
+  Text, TextInput, 
+  Button, 
+  View 
+} from 'react-native';
+import { 
+  Asset, 
+  AppLoading, 
+  BlurView,  
+} from 'expo';
 
 import Amplify, { Auth } from 'aws-amplify'
 import AWSConfig from './aws-exports'
 Amplify.configure(AWSConfig)
 
-import Routes from './Tabs'
+// import Routes from './Tabs'
+import Router from './Router';
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 const Backgrounduri = './assets/images/bg.png';
@@ -71,7 +83,7 @@ export default class App extends React.Component {
           style = {StyleSheet.absoluteFill} /> */}
 
 
-      <Routes />
+      <Router />
 
 
       </View>

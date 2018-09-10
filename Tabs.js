@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation'
 
 import SignIn from './SignIn'
-import SignUp from './SignUp'
+import SignUp from './screens/SignUp/SignUp'
 
 const Routes = createStackNavigator (
   {
