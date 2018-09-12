@@ -3,6 +3,8 @@ import { Router, Scene, Stack } from 'react-native-router-flux';
 import { StyleSheet, View, StatusBar } from 'react-native';
 
 import LoginScreen from './screens/Login/SignIn';
+import SignUpScreen from './screens/SignUp/SignUp';
+
 // import LoginScreen from './screens/Login/index';
 // import SignupScreen from './screens/Signup/index';
 // import ForgotPswdScreen from './screens/ForgotPassword/index';
@@ -31,6 +33,7 @@ const RouterComponent = () => {
       />
       <Router>
           <Stack key="root" hideNavBar>
+            {/* <Scene key="signup" component={SignUpScreen} initial /> */}
             <Scene key="login" component={LoginScreen} initial />
             {/* <Scene key="signup" component={SignupScreen} />
             <Scene key="forgotpswd" component={ForgotPswdScreen} />

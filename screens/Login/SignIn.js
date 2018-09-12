@@ -19,7 +19,7 @@ import styles from './style';
 
 export default class App extends React.Component {
   state = {
-    username: '',
+    // username: '',
     password: 'Qwerty-123',
     phone_number: '',
     confirmationCode: '',
@@ -33,8 +33,8 @@ export default class App extends React.Component {
   }
 
   signIn() {
-    const { username, password } = this.state
-    Auth.signIn(username, password)
+    const { phone_number, password } = this.state
+    Auth.signIn(phone_number, password)
       .then(user => {
         this.setState({ user })
         console.log('successful sign in!')
@@ -62,28 +62,20 @@ export default class App extends React.Component {
         <ScrollView style={styles.overlayContainer}>
           <Image source={require('../../assets/images/greenWhite.png')} style={styles.logo} />
 
-
           <TextInput
-            onChangeText={value => this.onChangeText('username', value)}
+            onChangeText={value => this.onChangeText('phone_number', value)}
             style={[styles.inputField, styles.inputStyle]}
-            placeholder='username'
+            placeholder="Sign in with mobile number"
             placeholderTextColor='grey'
-            placeholder="Enter mobile number"
-            placeholderTextColor='blue'
             keyboardType='phone-pad'
             enablesReturnKeyAutomatically={true}
-            maxLength={8}
+            maxLength={11}
             returnKeyType='next'
 
           />
 
           <Text style={styles.subText}>A 6-digit code will be sent to this number</Text>
-
-
-          <Touchable style={[styles.orange, styles.btnTouchable, { marginTop: 13 }]}
-            onPress={() => this.props.navigation.navigate('SignUpScreen')}>
-            <Text>NEXT</Text>
-          </Touchable>
+          <Button title="Sign In" onPress={this.signIn.bind(this)} />
 
           <Touchable style={[styles.greenBtn, styles.btnTouchable, { marginTop: 88 }]}
             onPress={() => this.props.navigation.navigate('SignUpScreen')}>

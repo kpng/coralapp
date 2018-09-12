@@ -26,5 +26,5 @@ features:
             require-upper-case: true
           standard-attributes: '[]'
           username-attributes: '["email","phone_number"]'
-name: coralapp0609
+name: coralapp-2018-09-12-10-37-00
 region: ap-southeast-1

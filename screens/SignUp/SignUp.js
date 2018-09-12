@@ -21,12 +21,14 @@ export default class App extends React.Component {
   }
   signUp() {
     Auth.signUp({
-      username: this.state.username,
+      phone_number: this.state.phone_number,
+
+      username: this.state.phone_number,
       //password: this.state.password,
       password: 'Qwerty-123',
       attributes: {
-        email: this.state.username,
-        phone_number: this.state.phone_number
+        // email: this.state.username,
+        // phone_number: this.state.phone_number
       }
     })
     .then(() => console.log('successful sign up!'))
@@ -48,9 +50,9 @@ export default class App extends React.Component {
           <Text style={[styles.gothamLight, styles.title]}>CORAL</Text>
           <Text style={[styles.subText, styles.gothamLight]}>Community Recycling Made Simple</Text>
           <TextInput
-            onChangeText={value => this.onChangeText('username', value)}
+            onChangeText={value => this.onChangeText('phone_number', value)}
             style={styles.input}
-            placeholder='email'
+            placeholder='phone'
           />
           {/* <TextInput
             onChangeText={value => this.onChangeText('password', value)}
@@ -58,11 +60,11 @@ export default class App extends React.Component {
             secureTextEntry={true}
             placeholder='password'
           /> */}
-          <TextInput
+          {/* <TextInput
             onChangeText={value => this.onChangeText('phone_number', value)}
             style={styles.input}
             placeholder='phone'
-          />
+          /> */}
           {/* <TextInput
             onChangeText={value => this.onChangeText('email', value)}
             style={styles.input}
